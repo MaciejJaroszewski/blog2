@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+<!--     <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="page-header ">
+            <h1>BLOG <p><small>integracja AngularJS, PHP wraz z bazami danych MySQL</small></p></h1>
+        </div>
+
+
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <button class="col-md-4 col-md-offset-1 btn btn-primary">Dodaj wpis</button>
+                <button class="col-md-4 col-md-offset-2 btn btn-warning">Zobacz wpisy</button>
+            </div>
+        </div> -->
+        <br>
+
+        <div class="row" ng-controller="BlogCtrl">
+            <div class="col-md-12">
+                <div class="well">
+                    <form name="note" id="blogForm" ng-submit="insertData(newEntry)" novalidate>
+                        <div class="form-group">
+                            <label for="noteTitle">Tytuł</label>
+                            <input name="noteTitle" ng-model="newEntry.tytul" type="text" class="form-control" id="noteTitle" placeholder="Tytuł wpisu" required>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="noteContent">Treść wpisu</label>
+                            <textarea name="noteContent" ng-model="newEntry.wpis" class="form-control" id="noteContent" placeholder="Treść wpisu"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="noteDate">Data wpisu</label>
+                            <input name="noteDate" type="text" ng-model="newEntry.data_wpisu" class="form-control" id="noteDate" pattern="\d{4}-\d{2}-\d{2}" placeholder="rrrr-MM-dd">
+                        </div>
+                        <button type="submit" class="btn btn-default">Zamieść wpis</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12">
+                <div class="well" ng-repeat="(id, entry) in blogEntries">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    {{ id+1 }}
+                                </th>
+                                <th>
+                                    {{ entry.tytul }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    {{ entry.wpis }}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    {{ entry.data_wpisu }}
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
